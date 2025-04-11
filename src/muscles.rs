@@ -17,8 +17,16 @@ const BACK: [Muscle; 4] = [Muscle::DorsalR, Muscle::DorsalL, Muscle::LumbarR, Mu
 const ALL: [Muscle; 10] = [Muscle::PectoralR, Muscle::PectoralL, Muscle::AbdominalR, Muscle::AbdominalL, Muscle::ArmR, Muscle::ArmL, Muscle::DorsalR, Muscle::DorsalL, Muscle::LumbarR, Muscle::LumbarL];
 
 
-impl Muscle {
-    pub fn with_intensity(self, intensity: u8) -> String {
-        format!("{}%{}", self as u8, intensity)
+pub struct MuscleWithIntensity {
+    muscle: Muscle, 
+    intensity: u8
+}
+
+impl MuscleWithIntensity {
+    pub fn new(muscle: Muscle, intensity: u8) -> MuscleWithIntensity {
+        MuscleWithIntensity { muscle, intensity }
+    }
+    pub fn to_packet(self) -> String {
+        format!("{}%{}", self.muscle as u8, self.intensity)
     }
 }
