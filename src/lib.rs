@@ -1,3 +1,4 @@
+mod client;
 mod network;
 mod muscles;
 mod sensations;
@@ -8,25 +9,16 @@ pub fn add(left: u64, right: u64) -> u64 {
 
 #[cfg(test)]
 mod tests {
-    use std::net::UdpSocket;
-    use std::thread::sleep;
-    use std::time::Duration;
-    use crate::network::UDPNetwork;
-    use super::*;
+    use std::net::SocketAddrV4;
+    use std::str::FromStr;
+    use crate::client::Client;
 
     #[test]
     fn it_works() {
-        let network = UDPNetwork::new();
+        let client = Client::new();
 
-        loop {
-            if let Some((data, src)) = network.recv_from() {
-                println!("Received: {} from {}", data, src);
-            } else {
-                network.send("ping")
-            }
+        client.network.connect(SocketAddrV4::from_str("192.168.68.115:54020").expect("Unable to parse IP address"));
 
-            sleep(Duration::from_secs(3));
-        }
-
+        client.find_server();
     }
 }

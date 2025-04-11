@@ -1,5 +1,5 @@
 #[repr(u8)]
-enum Muscle {
+pub enum Muscle {
     PectoralR = 0,
     PectoralL = 1,
     AbdominalR = 2,
@@ -18,7 +18,7 @@ const ALL: [Muscle; 10] = [Muscle::PectoralR, Muscle::PectoralL, Muscle::Abdomin
 
 
 impl Muscle {
-    fn with_intensity(self, intensity: u8) -> String {
+    pub fn with_intensity(self, intensity: u8) -> String {
         format!("{}%{}", self as u8, intensity)
     }
 }

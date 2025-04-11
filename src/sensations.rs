@@ -1,4 +1,4 @@
-struct MicroSensation {
+pub struct MicroSensation {
     frequency: u8,
     duration: f32,
     intensity: u8,
@@ -9,7 +9,7 @@ struct MicroSensation {
 }
 
 impl MicroSensation {
-    fn new(frequency: u8, duration: f32, intensity: u8, ramp_up: f32, ramp_down: f32, exit_delay: f32, name: String) -> MicroSensation {
+    pub fn new(frequency: u8, duration: f32, intensity: u8, ramp_up: f32, ramp_down: f32, exit_delay: f32, name: String) -> MicroSensation {
         let frequency = frequency.clamp( 1, 100);
 		let duration = duration.clamp(0.1, 20.0).round();
 		let intensity = intensity.clamp(0, 100);
@@ -21,7 +21,7 @@ impl MicroSensation {
         MicroSensation { frequency, duration, intensity, ramp_up, ramp_down, exit_delay, name }
     }
 
-    fn to_packet(&self) -> String {
+    pub fn to_packet(&self) -> String {
         format!("{},{},{},{},{},{},{}",
             self.frequency,
             (self.duration * 10.0).round() as u32,
