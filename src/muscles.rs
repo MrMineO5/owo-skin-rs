@@ -1,0 +1,24 @@
+#[repr(u8)]
+enum Muscle {
+    PectoralR = 0,
+    PectoralL = 1,
+    AbdominalR = 2,
+    AbdominalL = 3,
+    ArmR = 4,
+    ArmL = 5,
+    DorsalR = 6,
+    DorsalL = 7,
+    LumbarR = 8,
+    LumbarL = 9,
+}
+
+const FRONT: [Muscle; 6] = [Muscle::PectoralR, Muscle::PectoralL, Muscle::AbdominalR, Muscle::AbdominalL, Muscle::ArmR, Muscle::ArmL];
+const BACK: [Muscle; 4] = [Muscle::DorsalR, Muscle::DorsalL, Muscle::LumbarR, Muscle::LumbarL];
+const ALL: [Muscle; 10] = [Muscle::PectoralR, Muscle::PectoralL, Muscle::AbdominalR, Muscle::AbdominalL, Muscle::ArmR, Muscle::ArmL, Muscle::DorsalR, Muscle::DorsalL, Muscle::LumbarR, Muscle::LumbarL];
+
+
+impl Muscle {
+    fn with_intensity(self, intensity: u8) -> String {
+        format!("{}%{}", self as u8, intensity)
+    }
+}

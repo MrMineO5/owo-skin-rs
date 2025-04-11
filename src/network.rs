@@ -11,10 +11,10 @@ impl UDPNetwork {
         UDPNetwork { socket }
     }
 
-    pub fn recv_from(&self) -> Option<(&str, SocketAddr)> {
+    pub fn recv_from(&self) -> Option<(String, SocketAddr)> {
         let mut buf = [0; 1024];
         if let Ok((amt, src)) = self.socket.recv_from(&mut buf) {
-            Option::Some((String::from_utf8_lossy(&buf[..amt]).as_ref(), src))
+            Option::Some((String::from_utf8_lossy(&buf[..amt]).to_string(), src))
         } else {
             Option::None
         }
