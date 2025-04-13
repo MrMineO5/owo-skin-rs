@@ -1,4 +1,5 @@
 #[repr(u8)]
+#[derive(Debug, Clone, Copy)]
 pub enum Muscle {
     PectoralR = 0,
     PectoralL = 1,
@@ -16,7 +17,7 @@ pub const FRONT: [Muscle; 6] = [Muscle::PectoralR, Muscle::PectoralL, Muscle::Ab
 pub const BACK: [Muscle; 4] = [Muscle::DorsalR, Muscle::DorsalL, Muscle::LumbarR, Muscle::LumbarL];
 pub const ALL: [Muscle; 10] = [Muscle::PectoralR, Muscle::PectoralL, Muscle::AbdominalR, Muscle::AbdominalL, Muscle::ArmR, Muscle::ArmL, Muscle::DorsalR, Muscle::DorsalL, Muscle::LumbarR, Muscle::LumbarL];
 
-
+#[derive(Clone, Copy)]
 pub struct MuscleWithIntensity {
     muscle: Muscle, 
     intensity: u8
