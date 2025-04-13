@@ -18,19 +18,19 @@ fn main() {
     client.send_sensation(
         MicroSensation::new(
             100,
-            10.0,
+            1.0,
             30,
             0.0,
             0.0,
             0.0,
             "test".to_string()
-        ), 
-    MuscleWithIntensity::new(muscles::Muscle::ArmL, 5)
-);
-    
+        ),
+        MuscleWithIntensity::new(muscles::Muscle::ArmL, 5)
+    );
+
     client.send_sensation_muscles(
         MicroSensation::new(100,
-            10.0,
+            1.0,
             30,
             0.0,
             0.0,
@@ -42,5 +42,5 @@ fn main() {
             MuscleWithIntensity::new(muscles::Muscle::ArmR, 10),
             MuscleWithIntensity::new(muscles::Muscle::AbdominalL, 1),
         ]
-);
+    );
 }
