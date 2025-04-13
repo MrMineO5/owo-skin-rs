@@ -12,9 +12,9 @@ pub enum Muscle {
     LumbarL = 9,
 }
 
-const FRONT: [Muscle; 6] = [Muscle::PectoralR, Muscle::PectoralL, Muscle::AbdominalR, Muscle::AbdominalL, Muscle::ArmR, Muscle::ArmL];
-const BACK: [Muscle; 4] = [Muscle::DorsalR, Muscle::DorsalL, Muscle::LumbarR, Muscle::LumbarL];
-const ALL: [Muscle; 10] = [Muscle::PectoralR, Muscle::PectoralL, Muscle::AbdominalR, Muscle::AbdominalL, Muscle::ArmR, Muscle::ArmL, Muscle::DorsalR, Muscle::DorsalL, Muscle::LumbarR, Muscle::LumbarL];
+pub const FRONT: [Muscle; 6] = [Muscle::PectoralR, Muscle::PectoralL, Muscle::AbdominalR, Muscle::AbdominalL, Muscle::ArmR, Muscle::ArmL];
+pub const BACK: [Muscle; 4] = [Muscle::DorsalR, Muscle::DorsalL, Muscle::LumbarR, Muscle::LumbarL];
+pub const ALL: [Muscle; 10] = [Muscle::PectoralR, Muscle::PectoralL, Muscle::AbdominalR, Muscle::AbdominalL, Muscle::ArmR, Muscle::ArmL, Muscle::DorsalR, Muscle::DorsalL, Muscle::LumbarR, Muscle::LumbarL];
 
 
 pub struct MuscleWithIntensity {
