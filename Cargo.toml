@@ -1,6 +1,15 @@
 [package]
-name = "owo"
+name = "owo-skin-rs"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
+description = "A Rust library for controlling the OWO skin"
+repository = "https://github.com/MrMineO5/owo-skin-rs"
+readme = "README.md"
+keywords = ["owo", "owo-games", "owo-skin", "library"]
+
+[lib]
+name = "owo_skin"
+path = "src/lib.rs"
 
 [dependencies]

@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "owo"
+name = "owo-skin-rs"
 version = "0.1.0"
