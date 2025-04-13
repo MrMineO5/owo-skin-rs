@@ -9,7 +9,7 @@ A minimal implementation of the [OWO Skin Application Protocol](https://owogame.
 ## Usage
 ```rust
 use owo_skin::client::Client;
-use owo_skin::muscles::MuscleWithIntensity;
+use owo_skin::muscles::{Muscle, MuscleWithIntensity};
 use owo_skin::sensations::MicroSensation;
 
 fn main() {

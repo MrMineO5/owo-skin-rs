@@ -1,4 +1,4 @@
-mod client;
+pub mod client;
 mod network;
-mod muscles;
-mod sensations;
+pub mod muscles;
+pub mod sensations;
