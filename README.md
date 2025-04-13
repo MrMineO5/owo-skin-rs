@@ -1,4 +1,4 @@
-# OWO-rs
+# OWO-Skin-rs
 A minimal implementation of the [OWO Skin Application Protocol](https://owogame.com/) written in Rust.
 
 ## Features
