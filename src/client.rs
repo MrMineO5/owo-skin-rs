@@ -1,6 +1,5 @@
-use crate::muscles::MuscleWithIntensity;
 use crate::network::UDPNetwork;
-use crate::sensations::MicroSensation;
+use crate::sensation::Sensation;
 use std::net::ToSocketAddrs;
 use std::thread::sleep;
 use std::time::Duration;
@@ -35,28 +34,8 @@ impl Client {
         }
     }
 
-    pub fn send_sensation(&self, micro_sensation: MicroSensation, muscle: MuscleWithIntensity) {
-        self.network.send(
-            format!(
-                "0*SENSATION*{}|{}",
-                micro_sensation.to_packet(),
-                muscle.to_packet()
-            )
-            .as_str(),
-        )
-    }
-
-    pub fn send_sensation_muscles(
-        &self,
-        micro_sensation: MicroSensation,
-        muscles: Vec<MuscleWithIntensity>,
-    ) {
-        let tmp = muscles
-            .into_iter()
-            .map(|x| x.to_packet())
-            .collect::<Vec<String>>()
-            .join(",");
+    pub fn send_sensation(&self, sensation: Sensation) {
         self.network
-            .send(format!("0*SENSATION*{}|{}", micro_sensation.to_packet(), tmp).as_str())
+            .send(format!("0*SENSATION*{}", sensation.to_packet()).as_str())
     }
 }
