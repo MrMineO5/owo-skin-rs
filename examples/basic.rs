@@ -1,3 +1,4 @@
+use owo_skin::auth::GameAuth;
 use owo_skin::client::Client;
 use owo_skin::muscles;
 use owo_skin::muscles::MuscleWithIntensity;
@@ -6,7 +7,7 @@ use std::thread::sleep;
 use std::time::Duration;
 
 fn main() {
-    let client = Client::new();
+    let client = Client::new(GameAuth::default());
 
     client.auto_connect();
 
