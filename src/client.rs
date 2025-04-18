@@ -3,14 +3,16 @@ use crate::sensation::Sensation;
 use std::net::ToSocketAddrs;
 use std::thread::sleep;
 use std::time::Duration;
+use crate::auth::GameAuth;
 
 pub struct Client {
-    pub network: UDPNetwork,
+    auth: GameAuth,
+    network: UDPNetwork,
 }
 impl Client {
-    pub fn new() -> Client {
+    pub fn new(auth: GameAuth) -> Client {
         let network = UDPNetwork::new();
-        Client { network }
+        Client { auth, network }
     }
 
     pub fn auto_connect(&self) {
@@ -21,7 +23,8 @@ impl Client {
         loop {
             if let Some((data, src)) = self.network.recv_from() {
                 if data == "okay" {
-                    self.network.send_to("0*AUTH*", src);
+                    let message = format!("{}*AUTH*{}", self.auth.id, self.auth.baked_sensations);
+                    self.network.send_to(message.as_str(), src);
                 } else if data == "pong" {
                     self.network.connect(src);
                     break;
@@ -36,6 +39,6 @@ impl Client {
 
     pub fn send_sensation(&self, sensation: Sensation) {
         self.network
-            .send(format!("0*SENSATION*{}", sensation.to_packet()).as_str())
+            .send(format!("{}*SENSATION*{}", self.auth.id, sensation.to_packet()).as_str())
     }
 }
