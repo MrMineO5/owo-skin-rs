@@ -10,10 +10,10 @@ mod sensation_with_muscles;
 mod baked_sensation;
 
 pub enum Sensation {
-    MicroSensation(MicroSensation),
-    SensationSequence(SensationSequence),
-    SensationWithMuscles(SensationWithMuscles),
-    BakedSensation(BakedSensation)
+    MicroSensation(Box<MicroSensation>),
+    SensationSequence(Box<SensationSequence>),
+    SensationWithMuscles(Box<SensationWithMuscles>),
+    BakedSensation(Box<BakedSensation>)
 }
 impl Sensation {
 
@@ -26,19 +26,19 @@ impl Sensation {
         let exit_delay = exit_delay.clamp(0.0, 20.0);
         let name = name;
 
-        Sensation::MicroSensation(MicroSensation { frequency, duration, intensity, ramp_up, ramp_down, exit_delay, name })
+        Sensation::MicroSensation(Box::new(MicroSensation { frequency, duration, intensity, ramp_up, ramp_down, exit_delay, name }))
     }
 
     pub fn sequence(sensations: Vec<Sensation>) -> Sensation {
-        Sensation::SensationSequence(SensationSequence { sensations })
+        Sensation::SensationSequence(Box::new(SensationSequence { sensations }))
     }
 
     pub fn with_muscles(sensation: Sensation, muscles: Vec<MuscleWithIntensity>) -> Sensation {
-        Sensation::SensationWithMuscles(SensationWithMuscles { sensation: Box::new(sensation), muscles })
+        Sensation::SensationWithMuscles(Box::new(SensationWithMuscles { sensation, muscles }))
     }
 
     pub fn baked(id: u32) -> Sensation {
-        Sensation::BakedSensation(BakedSensation { id })
+        Sensation::BakedSensation(Box::new(BakedSensation { id }))
     }
 
 

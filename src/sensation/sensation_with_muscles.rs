@@ -2,7 +2,7 @@ use crate::muscles::MuscleWithIntensity;
 use crate::sensation::Sensation;
 
 pub struct SensationWithMuscles {
-    pub(crate) sensation: Box<Sensation>,
+    pub(crate) sensation: Sensation,
     pub(crate) muscles: Vec<MuscleWithIntensity>,
 }
 impl SensationWithMuscles {
