@@ -1,4 +1,7 @@
 # OWO-Skin-rs
+
+[![Crates.io Version](https://img.shields.io/crates/v/owo-skin-rs)](https://crates.io/crates/owo-skin-rs)
+
 A minimal implementation of the [OWO Skin Application Protocol](https://owogame.com/) written in Rust.
 
 ## Features
